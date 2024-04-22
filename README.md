@@ -4,7 +4,7 @@
 
 1. ### CodeCommit
 
-CodeCommit is a managed source control service that enables teams to securely collaborate on code. Your code is secured using encryption in transit and at rest.
+- CodeCommit is a managed source control service that enables teams to securely collaborate on code. Your code is secured using encryption in transit and at rest.
 
 2. ### RDS Proxy
 
