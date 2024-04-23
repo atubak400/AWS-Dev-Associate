@@ -31,3 +31,27 @@
 6. ### CodePipeline
 
 - CodePipeline enables you to automate your software build, test, and release processes.
+
+7. ### API Gateway
+
+- API Gateway is an AWS service that allows you to create, publish, maintain, monitor, and secure APIs(REST APIs, WebSocket APIs and HTTP APIs) at any scale, acting as a front-end that manages and processes incoming API requests.
+
+8. ### Lambda /tmp directory
+
+- when building applications with AWS Lambda that need temporary storage during processing, you can use the /tmp directory for fast, local storage of data up to 512 MB. This directory is good for data that does not need to be saved after the function is done running, making it perfect for temporary needs. It's simple to use since it’s already part of Lambda, and it doesn't cost extra. 
+
+- However, if you expect to need more space or want to keep the data after the function stops, other options like EFS might be better. This helps you choose the right storage option based on how much data you have and whether it needs to be saved long-term.
+
+9. ### Codedeploy In-place and Blue-Green
+
+- When deploying an application to a new fleet of EC2 instances that are not yet serving users, an In-place deployment strategy with AWS CodeDeploy is effective and straightforward. This method involves installing and updating the application directly on the new instances without impacting live traffic, as there is no existing user load. It simplifies the deployment process since you can install the application, test it extensively, and then direct user traffic to these instances once they're fully configured and tested. This approach minimizes risk, avoids downtime typically associated with updating live systems, and is cost-effective since it doesn’t require maintaining multiple environments during the deployment.
+
+- Blue/Green deployment offers superior risk mitigation for updates in live environments by providing a robust rollback strategy and minimal downtime, the In-place approach is often chosen for new, inactive instances due to its simplicity, cost efficiency, and adequacy for setups where immediate user impact is not a concern.
+
+10. ### ElastiCache for Redis
+
+- To enhance a MySQL RDS database operations, you should use caching solutions like ElastiCache for Redis, which not only improves read performance by reducing database load but also supports complex operations like sorting and ranking directly within the cache.
+
+
+
+
