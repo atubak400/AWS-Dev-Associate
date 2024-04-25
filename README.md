@@ -53,5 +53,25 @@
 - To enhance a MySQL RDS database operations, you should use caching solutions like ElastiCache for Redis, which not only improves read performance by reducing database load but also supports complex operations like sorting and ranking directly within the cache.
 
 
+11. ### Software project new features
+
+- The best practice for developing a new feature while keeping it separate from production-ready code in a software project is to create a branch from the default branch in AWS CodeCommit, allowing for isolated development and easy integration upon completion.
+
+12. ### CPU-Bound Lambda
+
+- When an AWS Lambda function is described as "CPU-bound," it means that the function's performance and speed are primarily limited by the amount of CPU power available to it, rather than by memory or input/output constraints.
+
+- When we say an AWS Lambda function is CPU-bound, it implies that the performance and completion time of the function are primarily restricted by the CPU resources available to it.
+
+- In AWS Lambda, the CPU power allocated to your function scales linearly with the amount of memory configured. By increasing the memory allocation, you not only provide more memory but also increase the CPU resources available to your function. This helps speed up processing for CPU-intensive tasks.
+
+13. ### API Mock integration 
+
+- Mock integration in the context of API development, particularly when using services like AWS API Gateway, refers to a method where you configure the API Gateway to return predefined responses to API requests without the need for an actual backend service. This technique is used to simulate the behavior of backend APIs during the development and testing phases, allowing developers to ensure that the front-end or client-side of an application can handle API interactions correctly.
+
+- When discussing mock integrations or API Gateway, the term API generally refers to the interface exposed for interaction, and the backend would be the system implementing the logic and data handling that responds to those API calls.
+
+14. ### 
+
 
 
