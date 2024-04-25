@@ -71,7 +71,14 @@
 
 - When discussing mock integrations or API Gateway, the term API generally refers to the interface exposed for interaction, and the backend would be the system implementing the logic and data handling that responds to those API calls.
 
-14. ### 
+14. ### lifecycle hooks for in-place deployment using CodeDeploy
 
+- The correct run order for lifecycle hooks for an in-place deployment using CodeDeploy is:
+    ApplicationStop, BeforeInstall, AfterInstall, ApplicationStart, ValidateService
+    - ApplicationStop: This hook is used to gracefully stop the application service before updating it. It's the first step in ensuring that there are no ties to the resources that might need updating, such as files that need to be replaced or database connections that need to be reset.
+    - BeforeInstall: This runs after the application is stopped but before the new application version is installed. This hook is often used to perform tasks like backing up the current version, prepping configuration files, or setting up necessary dependencies.
+    - AfterInstall: After the new application version has been installed, this hook can be used to configure additional components, change permissions, or perform any other setup required before the application starts running again.
+    - ApplicationStart: This hook starts the application service with the new version in place. It ensures that the application is up and running correctly with all the new updates.
+    - ValidateService: Finally, this hook is used to validate that the new deployment is functioning as expected. This can involve health checks, integration testing, or any other validation processes necessary to confirm the success of the deployment.
 
 
