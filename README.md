@@ -71,7 +71,7 @@
 
 - When discussing mock integrations or API Gateway, the term API generally refers to the interface exposed for interaction, and the backend would be the system implementing the logic and data handling that responds to those API calls.
 
-14. ### lifecycle hooks for in-place deployment using CodeDeploy
+14. ### Lifecycle hooks for in-place deployment using CodeDeploy
 
 - The correct run order for lifecycle hooks for an in-place deployment using CodeDeploy is:
     ApplicationStop, BeforeInstall, AfterInstall, ApplicationStart, ValidateService
@@ -81,4 +81,30 @@
     - ApplicationStart: This hook starts the application service with the new version in place. It ensures that the application is up and running correctly with all the new updates.
     - ValidateService: Finally, this hook is used to validate that the new deployment is functioning as expected. This can involve health checks, integration testing, or any other validation processes necessary to confirm the success of the deployment.
 
+15. ### Kinesis Firehose, Lambda and Athena
+- If you are designing an application that consumes a large amount of unstructured streaming data that needs to be processed and then stored persistently so that a team of analysts can generate reports by running SQL queries on the data. You should:
 
+ - Use Kinesis Firehose to capture the streaming data, use Lambda to process the data, and store the processed data in S3. Use Athena to run the SQL queries.
+
+  - Kinesis Firehose is a service that can be used to capture streaming data for further processing. Lambda is able to consume data from Kinesis, process it, and store the results in S3. Athena is a service that enables you to run standard SQL queries on data that is stored in S3.
+
+
+16. ### Step Functions
+
+- Step Functions enables you to build and model your serverless application as a visual workflow consisting of a series of steps where the output of one stage can be input into another.
+
+17. ### In-place upgrade using AWS CodeDeploy
+
+- Unlike Blue-Green upgrade, in In-place upgrade using AWS CodeDeploy, the original instances are updated directly, meaning there are no separate instances running the old version to fall back on. Therefore, if a deployment fails, the best options for a quick is redeploying the previous version of the application manually.
+
+- Only a Blue/Green upgrade allows you to keep the original instances and roll back by routing all requests to the original instances.
+
+18. ### Lambda and scheduled event triggers
+
+-  AWS Lambda, combined with scheduled event triggers (like those from Amazon CloudWatch Events), is a highly efficient and cost-effective solution for running simple, stateless tasks that execute on a periodic schedule, such as processing data from an S3 bucket. This approach minimizes operational overhead and costs by charging only for the compute time used, making it ideal for tasks with predictable, short runtimes that do not require continuous compute resources.
+
+19. ### Lambda and database connections
+
+- Establishing database connections within Lambda execution environment allows them to be reused the next time the function is invoked, which saves time and improves the performance of your function. 
+
+- Reusing database connections across Lambda invocations can significantly reduce the overhead of establishing these connections for each function call, enhancing performance, especially for frequently invoked functions.
