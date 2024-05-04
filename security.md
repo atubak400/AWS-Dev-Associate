@@ -1,3 +1,3 @@
-# AWS DEV Associate Practice Questions
+# AWS Dev Associate Practice Questions
 
 ## Security
