@@ -2,8 +2,6 @@
 
 ## Security
 
-## Security
-
 1. ### IAM Policy
 
 {
@@ -61,7 +59,40 @@ This policy denies the ability to delete any objects with log in the name from t
 
 - Create an instance role that includes policies that grant read permissions to the bucket. Attach the role to the instance.
 
-8. ### 
+8. ### Lambda
 
+- In order for a Lambda function to write to a DynamoDB table, the Lambda function *execution role* needs to be configured with the proper permissions to write to the table; otherwise, a permission denied error will be thrown.
 
+9. ### Cognito
 
+- To configure a mobile application to allow users to sign in and sign up to your application via Facebook, use Cognito as an identity broker between your application and the web identity provider.
+
+10. ### Inline Policy
+
+- AWS inline policy is a policy that is directly associated with a specific AWS identity or resource and is defined within the configuration of that entity. This means that an inline policy is tightly coupled with the identity or resource it's attached to, and it cannot be reused or shared across multiple entities. Inline policies offer more granular control and customization, allowing you to define permissions specific to a particular user, group, or role without affecting others.
+
+11. ### Codecommit
+
+- AWS allows you to use the following secure connections (either the HTTPS or the SSH protocol) to connect to CodeCommit repositories.
+
+12. ### Lambda and Secret Manager
+
+- AWS Secrets Manager is the current AWS-recommended way to securely provide database credentials to Lambda functions. AWS Secrets Manager aids in the managing and rotating of the RDS database passwords.
+
+13. ### AWS Certificate Manager
+
+- When using AWS Certificate Manager (ACM) with CloudFront, the certificate must be created in the us-east-1 (N. Virginia) Region. CloudFront only supports custom SSL/TLS certificates provided by ACM in this specific region. 
+
+14. ### To set up your website on Amazon S3, you need to:
+
+- Create an S3 bucket in the region nearest to most of your users, using a bucket name that matches with your domain name.
+  > This ensures that users can access your website quickly with minimal latency by selecting a region close to them.
+
+- Enable static website hosting.
+ - This tells AWS that the bucket will serve static website content.
+
+- Configure the permissions on the objects within the bucket to allow public access.
+ - Even though enabling static website hosting makes the bucket accessible for website hosting, you still need to configure permissions to allow public access to the objects within the bucket.
+
+- Create an index and error document.
+ - These documents define the default page users see when they visit your website and the page displayed in case of errors, respectively.
