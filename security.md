@@ -96,3 +96,15 @@ This policy denies the ability to delete any objects with log in the name from t
 
 - Create an index and error document.
   - These documents define the default page users see when they visit your website and the page displayed in case of errors, respectively.
+
+15. ### Federated users
+
+-  These are users who are authenticated by an external identity provider, such as social media accounts (like Google or Facebook) or a corporate directory system. Instead of creating and managing user accounts directly within AWS Identity and Access Management (IAM), federated users authenticate outside of AWS and are then granted temporary access to AWS resources through an IAM role. This approach allows organizations to centralize user management and authentication processes while providing secure access to AWS services based on established identities from trusted sources.
+
+- To securely let a mobile app read data from DynamoDB, the recommended way by AWS is to make an IAM role. This role is designed for apps that work with federated users. These are users who log in through outside systems like Google or Facebook. When these users sign in, they get temporary permission to use AWS services, including reading from DynamoDB.
+
+- This approach involves setting up an IAM role specifically for the mobile application, allowing it to securely access DynamoDB. Federated users authenticate against an identity provider (such as Amazon Cognito or an external identity provider like Google or Facebook), and upon successful authentication, they assume the IAM role, which grants them the necessary permissions to interact with DynamoDB.
+
+16. ### Lambda and VPC
+
+- To enable an existing Lambda function to access EC2 instances that are located in a private VPC, configure the Lambda function's ( i.e. choose the correct subnets and security groups)and ensure that its Lambda execution role has the necessary permissions to access EC2 instances.
