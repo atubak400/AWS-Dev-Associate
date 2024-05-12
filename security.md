@@ -86,13 +86,13 @@ This policy denies the ability to delete any objects with log in the name from t
 14. ### To set up your website on Amazon S3, you need to:
 
 - Create an S3 bucket in the region nearest to most of your users, using a bucket name that matches with your domain name.
-  > This ensures that users can access your website quickly with minimal latency by selecting a region close to them.
+  - This ensures that users can access your website quickly with minimal latency by selecting a region close to them.
 
 - Enable static website hosting.
- > This tells AWS that the bucket will serve static website content.
+  - This tells AWS that the bucket will serve static website content.
 
 - Configure the permissions on the objects within the bucket to allow public access.
- > Even though enabling static website hosting makes the bucket accessible for website hosting, you still need to configure permissions to allow public access to the objects within the bucket.
+  - Even though enabling static website hosting makes the bucket accessible for website hosting, you still need to configure permissions to allow public access to the objects within the bucket.
 
 - Create an index and error document.
- > These documents define the default page users see when they visit your website and the page displayed in case of errors, respectively.
+  - These documents define the default page users see when they visit your website and the page displayed in case of errors, respectively.
