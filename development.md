@@ -108,3 +108,5 @@
 - Establishing database connections within Lambda execution environment allows them to be reused the next time the function is invoked, which saves time and improves the performance of your function. 
 
 - Reusing database connections across Lambda invocations can significantly reduce the overhead of establishing these connections for each function call, enhancing performance, especially for frequently invoked functions.
+
+
