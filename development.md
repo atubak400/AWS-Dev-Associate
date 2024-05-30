@@ -1,6 +1,6 @@
-# AWS Dev Associate Practice Questions
+# AWS Dev Associate Practice Questions 
 
-## Development
+## Part 1
 
 1. ### CodeCommit
 
@@ -110,3 +110,90 @@
 - Reusing database connections across Lambda invocations can significantly reduce the overhead of establishing these connections for each function call, enhancing performance, especially for frequently invoked functions.
 
 
+## Part 2
+
+20. ### Lambda ephemeral and shared files
+
+- For a Lambda function that needs to store ephemeral data up to 1 GB and persistently store and dynamically update shared files, the combination of using /tmp for ephemeral files and EFS for shared files is the optimal solution. This setup leverages the strengths of each storage solution, ensuring efficient and robust data handling for your application.
+
+21. ### Cognito and IAM
+
+- To decouple user authentication from application servers and manage secure access user permission to S3 buckets for your meme-sharing application, use Amazon Cognito for user sign-up and sign-in and AWS IAM to manage user permissions. This approach leverages the strengths of both services to provide a secure, scalable, and manageable solution.
+
+22. ### CodeCommit email notification
+
+- If you want users to receive an email notification whenever they push code to their AWS CodeCommit repositories, configure notifications in the CodeCommit console. This setup will create an Amazon EventBridge (formerly CloudWatch Events) rule to send a notification to an SNS topic, which will trigger an email to be sent to the user. This approach ensures ease of setup, automation, and scalability for your notification system.
+
+23. ### DynamoDB ProvisionedThroughputExceededException Error
+
+- To handle ProvisionedThroughputExceededException errors in DynamoDB, ensure your application is using exponential backoff. This strategy helps to reduce immediate pressure on the database by progressively waiting longer before retrying failed operations, providing a more efficient and cost-effective way to manage throughput issues without immediately increasing the provisioned capacity.
+
+24. ### Lambda environment variables
+
+- To dynamically change the behavior of an AWS Lambda function, use environment variables. This method allows you to modify configuration settings such as message strings without updating or redeploying the function code, providing flexibility and ease of management.
+
+25. ### Lambda layer
+
+- To consistently manage and update shared libraries across multiple AWS Lambda functions, create a Lambda layer containing the necessary libraries and associate it with your functions. This approach simplifies dependency management, ensures consistency, and allows for easy updates.
+
+26. ### SQS
+
+- To decouple application components and enable them to fail independently, use Amazon SQS (Simple Queue Service). SQS allows asynchronous message passing between components, ensuring that the failure of one component does not directly impact others, thereby enhancing the application's resilience and scalability.
+
+27. ### CodeDeploy AppSpec file
+
+- In the CodeDeploy AppSpec file, hooks are used to specify code, scripts, or functions to be executed at defined points in the deployment lifecycle. This enables you to customize and control the deployment process by running custom logic at various stages, ensuring a smooth and tailored deployment experience.
+
+28. ### API Gateway mock integrations
+
+- To test your user interface workflow when backend components are not yet ready, use API Gateway mock integrations. This approach allows you to simulate backend responses, ensuring that your frontend development and testing can proceed without dependency on the backend, facilitating parallel development and testing efforts.
+
+29. ### Lifecycle Hooks
+
+- In CodeDeploy for EC2 and On-Premises deployments, the correct sequence of lifecycle hooks is "Application Stop - Before Install - After Install - Application Start." This order ensures a smooth deployment by stopping the application, installing new code, performing post-installation tasks, and then restarting the application.
+
+30. ### Lambda and private VPC
+
+- To enable a Lambda function to communicate with an RDS database in a private VPC, you must configure the function to connect to the VPC by providing the appropriate subnet and security group details. This setup ensures the function can access the RDS instance within the VPC securely and efficiently.
+
+31. ###  AWS CodeBuild environment variables
+
+- To manage a large number of environment variables for AWS CodeBuild, use Systems Manager Parameter Store. This service provides a secure and scalable way to store and reference configuration data, helping to avoid exceeding character limits in the buildspec file and ensuring efficient parameter management.
+
+32. ### CloudWatch Logs Insights
+
+- To efficiently query and analyze application logs stored in CloudWatch Logs, use CloudWatch Logs Insights. This service provides a robust query language and visualization tools, enabling effective debugging and troubleshooting of application failures.
+
+33. ### Lambda aliases and stage variables
+
+- A Lambda alias is like a pointer to a specific function version. Users can access the function version using the alias Amazon Resource Name (ARN).
+
+- To configure API Gateway stages and associate them with different Lambda function variants for prod, dev, and test environments, use Lambda aliases and stage variables. Lambda aliases help manage different function versions, while stage variables allow API Gateway stages to reference the appropriate Lambda function for each environment.
+
+34. ### Lambda performance
+
+- To improve the performance of a slow-running Lambda function, consider increasing the function memory, which also increases CPU allocation. Additionally, include large libraries and dependencies as a Lambda layer, reducing deployment package size and improving cold start performance. These actions can significantly enhance the efficiency and speed of your Lambda function.
+
+35. ### Lambda & Kinesis stream
+
+- To improve the processing speed of your Lambda function that handles data from a Kinesis stream and writes to a DynamoDB table, increase the number of shards in the Kinesis Data Stream, boost the provisioned throughput (RCUs and WCUs) of the DynamoDB table, and allocate more memory to the Lambda function. These actions will enhance parallel processing, prevent throughput errors, and provide more computational resources, resulting in better performance.
+
+36. ### Lambda failed Invocations
+
+- To handle errors in asynchronous Lambda invocations effectively, use a dead-letter queue to capture and store failed invocations for reprocessing. Additionally, configure a Lambda destination to receive invocation records of failures, enabling automated handling, notification, or logging of errors. These strategies ensure robust error management and improve the reliability of your application.
+
+37. ### Storing Session Data
+
+- To provide a scalable and shared session state storage for your web application, consider using ElastiCache or DynamoDB. Both services offer high availability, scalability, and low-latency access, ensuring that session state d
+
+38. ### Sorting and ranking of the data
+
+- To enhance the performance of your leaderboard application, configure ElastiCache for Redis and point your Lambda function at the ElastiCache cluster. Redis offers in-memory data processing capabilities that are ideal for fast read operations and complex operations like sorting and ranking, ensuring efficient handling of your growing user base and their data.
+
+- ElastiCache for Redis is well-suited for use cases that require fast, in-memory data processing with complex operations like sorting and ranking. Redis provides data structures that can efficiently handle leaderboard functionalities, such as sorted sets, which can store the scores and automatically rank them.
+
+39. ###  Configuring API Gateway based on deployment stages
+
+- To categorize and configure your APIs based on deployment stages like sandbox, test, or prod, use stage variables in API Gateway. Stage variables enable you to define and reference configuration attributes dynamically, ensuring flexibility and customization in your API setup and mapping templates. This approach allows you to manage different backend endpoints or settings efficiently across various stages of your application lifecycle.
+
+- Stage variables in API Gateway allow you to define key-value pairs that can be used to configure and customize the behavior of your API stages. These variables can be referenced in your API setup and mapping templates, enabling you to interact with different backend endpoints or configurations based on the deployment stage (sandbox, test, prod).
