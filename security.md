@@ -1,6 +1,6 @@
 # AWS Dev Associate Practice Questions
 
-## Security
+## Part 1
 
 1. ### IAM Policy
 
@@ -108,3 +108,69 @@ This policy denies the ability to delete any objects with log in the name from t
 16. ### Lambda and VPC
 
 - To enable an existing Lambda function to access EC2 instances that are located in a private VPC, configure the Lambda function's ( i.e. choose the correct subnets and security groups)and ensure that its Lambda execution role has the necessary permissions to access EC2 instances.
+
+
+## Part 2
+
+17. ### Secrets Manager and KMS key
+
+- For an e-commerce application running on an autoscaling group of EC2 instances that needs to securely store and retrieve an access token for sending instant messages via a proprietary API, using AWS Secrets Manager with a KMS key is the optimal solution. This setup ensures secure, encrypted storage of the access token, easy access management across multiple AWS accounts, and minimal management overhead.
+
+18. ### Lambda and Dynamo db
+
+- To enable a Lambda function to read from a DynamoDB table securely and efficiently, configure the Lambda execution role with the necessary permissions to access the DynamoDB table. This method adheres to best practices for security and access management within AWS, avoiding hardcoding credentials and ensuring seamless interaction between the Lambda function and DynamoDB.
+
+19. ### Parameter Store and Cloudtrail
+
+- To ensure that your application secrets are encrypted and all decryption activities are audited, use AWS Systems Manager Parameter Store to store secrets as SecureString parameters, and utilize AWS CloudTrail to audit the API calls related to decryption. This setup guarantees secure storage of secrets and provides a comprehensive audit trail for compliance.
+
+20. ### EC2 and S3
+
+- To securely and efficiently enable an EC2 instance to access an S3 bucket for reading and writing data, use an IAM role with the appropriate permissions. This approach ensures security best practices by avoiding the need to hardcode or locally store AWS credentials.
+
+21. ### Web Identity Federation and Amazon Cognito
+
+- Amazon Cognito is the AWS service that enables users to authenticate using social media accounts and provides them with temporary access to AWS resources, leveraging web identity federation to integrate with various identity providers.
+
+- While the concept of web identity federation refers to the ability to use web identity providers for authentication, Amazon Cognito is the specific AWS service that implements this functionality.
+
+22. ### AWS Cross-account Access 
+
+- To securely allow another AWS account to access resources in your AWS account, configure cross-account access by creating an IAM role with the necessary permissions and allow the third-party account to assume the role using their account ID and unique external ID. This approach ensures secure, granular access control.
+
+23. ### Management of database connection strings
+
+- For secure and scalable management of database connection strings in your e-commerce application, use AWS Systems Manager Parameter Store. This service securely stores and encrypts the credentials, allowing your application to retrieve them dynamically as needed.
+
+24. ### Cant access CloudWatch metrics
+
+- If you cannot access CloudWatch metrics but your colleague can, the issue is likely due to your IAM user lacking the necessary permissions. Check and update your IAM policies to ensure you have the appropriate permissions to view CloudWatch metrics.
+ 
+25. ### SQS messages Encryption
+
+- For ensuring that confidential data in your SQS messages is encrypted and centrally managed, use AWS Key Management Service (KMS). KMS provides robust encryption key management and integrates seamlessly with SQS to secure your data.
+
+26. ### x-amz-server-side-encryption
+
+- To ensure that your data is encrypted using SSE when uploading an object to S3 via the AWS REST API, include the x-amz-server-side-encryption request header. This header ensures that S3 will encrypt your object using the specified server-side encryption method.
+
+- The x-amz prefix in AWS headers indicates AWS-specific HTTP headers used to provide additional information and instructions to AWS services. These headers are essential for configuring and controlling various aspects of AWS service operations, such as server-side encryption, access permissions, and custom metadata.
+
+27. ### User Pools
+
+- Amazon Cognito uses User pools to manage sign-up and sign-in functionality for mobile and web applications.
+
+28. ### AssumeRoleWithWebIdentity API Call
+
+- A successful API call to AssumeRoleWithWebIdentity returns a set of temporary credentials (access key ID, secret access key, and security token) that provide temporary access to AWS services. These credentials are used to enable users authenticated via a web identity provider to interact with AWS resources securely.
+
+
+
+
+
+
+
+
+
+
+

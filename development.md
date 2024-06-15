@@ -184,7 +184,7 @@
 
 37. ### Storing Session Data
 
-- To provide a scalable and shared session state storage for your web application, consider using ElastiCache or DynamoDB. Both services offer high availability, scalability, and low-latency access, ensuring that session state d
+- To provide a scalable and shared session state storage for your web application, consider using ElastiCache or DynamoDB. Both services offer high availability, scalability, and low-latency access, ensuring that session state data is efficiently managed and accessible across multiple web servers.
 
 38. ### Sorting and ranking of the data
 
@@ -197,3 +197,113 @@
 - To categorize and configure your APIs based on deployment stages like sandbox, test, or prod, use stage variables in API Gateway. Stage variables enable you to define and reference configuration attributes dynamically, ensuring flexibility and customization in your API setup and mapping templates. This approach allows you to manage different backend endpoints or settings efficiently across various stages of your application lifecycle.
 
 - Stage variables in API Gateway allow you to define key-value pairs that can be used to configure and customize the behavior of your API stages. These variables can be referenced in your API setup and mapping templates, enabling you to interact with different backend endpoints or configurations based on the deployment stage (sandbox, test, prod).
+
+## Part 3
+
+40. ### API Gateway Caching
+To optimize the performance of your online hotel booking application that frequently requests the same travel-related add-on services, implement API caching in API Gateway. This caches the endpoint's responses for the most popular requests, reducing latency and the load on your backend services, resulting in improved overall application performance.
+
+41. ### API Gateway Integration with Lambda
+- To handle the high volume of concurrent requests from your online hotel booking application, integrate API Gateway with a 
+Lambda function. This allows you to scale your backend services efficiently, as Lambda automatically provisions and manages the
+compute resources needed to handle the increased load, ensuring high availability and reliability.
+
+42. ### Implement a FIFO Queue in SQS
+
+- Amazon SQS FIFO (First-In-First-Out) queues are designed to ensure exactly-once processing and prevent the addition of duplicate messages to the queue. While FIFO queues are typically used to maintain the order of message processing, they also provide deduplication capabilities which ensure that no duplicate jobs are added to the queue.
+
+- To ensure that duplicate jobs do not appear in the queue and maintain efficiency, implement a First-In-First-Out (FIFO) queue in SQS. FIFO queues provide deduplication features that prevent duplicate messages from being added, while the order of processing can be disregarded if it is not a requirement.
+
+43. ### Schedule a Trigger Using EventBridge
+- To trigger a Lambda function once every 24 hours, schedule a trigger using EventBridge. EventBridge allows you to define a schedule with a rate or cron expression and ensures reliable invocation of your Lambda function at the specified interval. This method is straightforward, serverless, and fully managed
+
+44. ### Exponential Backoff
+- When your application is experiencing a large number of failed requests to the S3 API, the AWS SDKs use exponential backoff to manage error retries. This strategy helps in reducing contention and managing flow control effectively by gradually increasing the wait time between retries and adding random jitter to distribute retry attempts more evenly.
+
+45. ### Amazon API Gateway
+
+- To build a REST API service for quick access to stock levels without spending time provisioning and managing servers, use Amazon API Gateway. It provides a fully managed solution to create and manage APIs, and when integrated with AWS Lambda, it allows for a serverless architecture that is scalable and cost-effective.
+
+46. ### CodeDeploy Deployment Integrations
+
+- CodeDeploy can manage deployments to On-premises servers, Lambda, EC2, and ECS Fargate. These integrations allow you to automate and streamline the deployment process across a variety of environments, both in the cloud and on-premises.
+
+47. ### Using Parameter Store for Environment Variables
+
+- Parameter Store: Use Parameter Store for the environment variables and reference the parameters in the application code. This approach provides a secure, centralized, and easy-to-manage solution for storing and accessing configuration data across multiple applications running on EC2. It ensures secure access, centralized management, and straightforward integration into your application code.
+
+48. ### DynamoDB Sort Key Data Types
+
+- When creating a DynamoDB table with an index sort key, the developer can use the following data types: String, Number, and Binary. These data types provide flexibility in defining the sort key based on different kinds of data that the application might need to query and sort by.
+
+49. ### Using DynamoDB TTL for Automatic Deletion
+
+- To automatically delete session data from a DynamoDB table after the session has expired and help minimize costs, configure a Time To Live (TTL) based on the session expiry time. This approach simplifies the management of expired data, as DynamoDB handles the deletion process automatically.
+
+50. ### Updating the Prod Alias
+
+- To ensure your serverless application uses the updated Lambda Node.js code, update the Prod alias to reference the new version of your function. This change will make sure that any calls to the function using the "Prod" alias will invoke the new version of the code.
+
+51. ### SAM Handler
+
+- In a SAM template, the Handler property defines the point in a Lambda function's code where execution begins. It specifies the entry point of your function, formatted as file.method, to correctly route the execution to the appropriate code segment.
+
+52. ### DynamoDB persisting user state data
+
+- For persisting user state data in a serverless application, DynamoDB is the recommended choice. It provides durable, scalable, and low-latency storage, ensuring that user data is reliably maintained and easily accessible.
+
+53. ### EC2 Instance Profile Role
+
+- To allow CodeDeploy to deploy an application to EC2 with the source code stored in AWS CodeCommit, create an IAM policy with the codecommit:GitPull action on the required repository and attach this policy to the EC2 instance profile role. This setup ensures that the EC2 instances have the necessary permissions to pull the code from CodeCommit during the deployment process.
+
+54. ### Using DynamoDB TTL for Automatic Purging
+
+- To automatically purge event data older than 30 days in a DynamoDB table, enable Time to Live (TTL) on the DynamoDB table and store the expiration timestamp in the TTL attribute in the epoch time format. This approach is optimal as it is built-in, efficient, and requires minimal maintenance.
+
+55. ### API Gateway Parameter Mapping and Request Transformation
+
+- Parameter mapping in API Gateway allows you to modify the request and response parameters, such as headers, path variables, query strings, and request bodies, before passing them to the backend service or client. This process is essential for customizing and controlling the data flow in your API Gateway integrations.
+
+- To modify the HTTP request header for requests processed by API Gateway, use parameter mapping with a request transformation. This allows you to add, modify, or remove headers before forwarding the request to the backend service, enabling you to track and correlate requests effectively with your application logs.
+
+- By effectively tracking and correlating requests with application logs, you enhance your ability to monitor, debug, and optimize your application, ensuring a better user experience and more reliable system performance.
+
+56. ### Amazon SNS
+
+- For a messaging-oriented application where multiple subscribers need to receive push notifications of time-critical messages via various transport protocols such as HTTP, Amazon SQS, and email, Amazon SNS is the best service to use.
+
+57. ### Using SNS for Failed Lambda Invocations
+
+- To email the invocation record of any failed Lambda invocations to the support team, configure an SNS topic as a destination for failed invocations and subscribe the support team email address to this SNS topic. This approach ensures that detailed failure information is promptly sent to the support team for investigation.
+
+58. ### Using DeletionPolicy to Retain Resources
+
+- To ensure that a database resource is saved for backup purposes upon stack deletion, set the DeletionPolicy to Retain in the CloudFormation template. This configuration prevents the deletion of the database when the stack is deleted, allowing you to preserve critical data for future use.
+
+59. ### Potential Reasons for Using Original Lambda Code
+
+- Qualified ARN typically refers to a fully specified Amazon Resource Name. An ARN uniquely identifies AWS resources, and it's essential in the management of permissions and resource identification in AWS environments. ARNs are a standardized way to refer to AWS resources, which can include anything from EC2 instances and S3 buckets to IAM roles and Lambda functions. e.g., arn:aws:lambda:region:account-id:function:function-name:version, arn:aws:s3:::my_corporate_bucket/exampleobject.png etc.
+
+- Qualified ARN Pointing to Previous Version: The application might be referencing a qualified ARN that still points to the old version of the code.
+
+- Forgot to Publish the New Version: The new code changes were uploaded but not published as a new version, so the $LATEST version is not being used by any aliases or qualified ARNs.
+
+- Alias Pointing to Previous Version: The application could be using an alias that has not been updated to point to the new version of the Lambda function. Ensure the alias is updated to reflect the new version to solve this issue.
+
+60. ### Reference the function using a qualified ARN and the $LATEST suffix.
+
+- When you create a Lambda function, there is only one version called $LATEST. You can refer to the function using its qualified ARN (i.e. Amazon Resource Name (ARN) plus a version suffix (e.g., $LATEST)) or the unqualified ARN, which is the function ARN without the version suffix. The function version for an unqualified function always maps to $LATEST, so you can access the latest version using the unqualified function ARN.
+
+61. ### Ensuring Lambda Access to EC2 Instances in Private Subnets
+
+- VPC Subnet Configuration: Configure the Lambda function to connect to the private subnets used by the EC2 instances.
+
+- ENI Management Permissions: Configure the Lambda execution role to have permissions for managing an ENI within the VPC.
+
+- Security Group Configuration: Configure the Lambda's security group so it has access to the EC2 instances. This involves setting appropriate inbound and outbound rules to enable communication between the Lambda function and the EC2 instances.
+
+62. ### Configuring ENI Management for Lambda Execution Role
+
+- Elastic Network Interface (ENI) is a virtual network card in a VPC that allows network communication within the VPC. It is essential for Lambda functions running in a VPC to communicate with other resources like EC2 instances.
+
+- IAM Role Configuration: The Lambda execution role must have permissions to manage ENIs (create, describe, attach, detach, delete). This configuration ensures the Lambda function can establish and manage network connections to access resources within the VPC, enabling secure and isolated communication.
