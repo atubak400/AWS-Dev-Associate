@@ -280,7 +280,7 @@ compute resources needed to handle the increased load, ensuring high availabilit
 
 - To ensure that a database resource is saved for backup purposes upon stack deletion, set the DeletionPolicy to Retain in the CloudFormation template. This configuration prevents the deletion of the database when the stack is deleted, allowing you to preserve critical data for future use.
 
-59. ### Potential Reasons for Using Original Lambda Code
+59. ### Potential Reasons for Using Original/Old Lambda Code
 
 - Qualified ARN typically refers to a fully specified Amazon Resource Name. An ARN uniquely identifies AWS resources, and it's essential in the management of permissions and resource identification in AWS environments. ARNs are a standardized way to refer to AWS resources, which can include anything from EC2 instances and S3 buckets to IAM roles and Lambda functions. e.g., arn:aws:lambda:region:account-id:function:function-name:version, arn:aws:s3:::my_corporate_bucket/exampleobject.png etc.
 

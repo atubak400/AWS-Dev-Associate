@@ -164,6 +164,13 @@ This policy denies the ability to delete any objects with log in the name from t
 
 - A successful API call to AssumeRoleWithWebIdentity returns a set of temporary credentials (access key ID, secret access key, and security token) that provide temporary access to AWS services. These credentials are used to enable users authenticated via a web identity provider to interact with AWS resources securely.
 
+## Part 3
+
+29. ### Using Macie and SSE-KMS for PII Identification and Encryption
+
+- Identify PII: Use AWS Macie to automatically discover and classify files containing personally identifiable information (PII) in your S3 buckets.
+- Encrypt with SSE-KMS: Create and use a KMS key managed by the security team for encrypting files with SSE-KMS, ensuring that the key is automatically rotated on an annual basis. This approach ensures that sensitive customer data is securely encrypted and managed in compliance with security policies.
+
 
 
 
