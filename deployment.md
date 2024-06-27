@@ -167,5 +167,18 @@ To develop a globally targeted website for private video rentals, combine Amazon
 
 - If you are migrating a restaurant booking application to AWS and need shared storage for a large number of images and documents, store the files in Amazon S3 and use an IAM instance role to grant your EC2 instances permissions to access the shared files. This approach ensures secure and scalable access to the shared storage without the need to manage credentials manually.
 
+31. ### Invalidating CloudFront Edge Caches
 
+- If you have updated your website content and users are still seeing the old content, you should invalidate the files from the CloudFront edge caches. This action ensures that CloudFront fetches the latest version of your content from the origin, updating the edge caches and serving the updated content to your users. This is the most effective way to ensure the latest version of your website is being delivered promptly.
 
+32. ### Defining Lambda Resources in CloudFormation
+
+- When deploying Lambda functions using CloudFormation, you should define your Lambda resources in the Resources section of the template. This section is where you specify the properties and configurations for the AWS resources you want to create and manage with CloudFormation.
+
+33. ### Simulating AZ Failure for RDS Multi-AZ
+
+- If you need to demonstrate the impact of a failed Availability Zone (AZ) on an RDS Multi-AZ deployment for disaster recovery testing, simulate an AZ failure by performing a reboot with forced failover on the RDS instance. This method effectively tests the failover capabilities and ensures your disaster recovery plan is robust without causing unnecessary disruptions.
+
+32. ### Managing Shards and Instances with Kinesis and KCL
+
+- If your Kinesis stream has more shards than EC2 instances, it is not necessary to increase the number of instances to match the number of shards. One worker can process any number of shards, so it's fine if the number of shards exceeds the number of instances. The Kinesis Client Library (KCL) will manage the distribution of shards among the available worker instances, ensuring efficient data processing without the need for a one-to-one mapping of instances to shards.
