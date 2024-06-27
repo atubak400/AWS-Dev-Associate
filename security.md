@@ -24,7 +24,7 @@
     ]
 }
 
-This policy denies the ability to delete any objects with log in the name from the mycustomerdata bucket, while allowing all other S3 actions.
+- This policy denies the ability to delete any objects with log in the name from the mycustomerdata bucket, while allowing all other S3 actions.
 
 2. ### AMI
 
@@ -170,6 +170,99 @@ This policy denies the ability to delete any objects with log in the name from t
 
 - Identify PII: Use AWS Macie to automatically discover and classify files containing personally identifiable information (PII) in your S3 buckets.
 - Encrypt with SSE-KMS: Create and use a KMS key managed by the security team for encrypting files with SSE-KMS, ensuring that the key is automatically rotated on an annual basis. This approach ensures that sensitive customer data is securely encrypted and managed in compliance with security policies.
+
+30. ### Using Macie and SSE-KMS for PII Identification and Encryption
+
+- Identify PII: Use AWS Macie to automatically discover and classify files containing personally identifiable information (PII) in your S3 buckets.
+
+- Encrypt with SSE-KMS: Create and use a KMS key managed by the security team for encrypting files with SSE-KMS, ensuring that the key is automatically rotated on an annual basis. This approach ensures that sensitive customer data is securely encrypted and managed in compliance with security policies.
+
+31. ### Using Cognito for Device Tracking
+
+- Use Cognito to efficiently manage user identities and track when users access your site using different devices. Cognito provides built-in features for device tracking, user session management, and robust security, making it an ideal solution for identifying and managing user access across multiple devices.
+
+32. ### Using AWS Encryption SDK for Client-Side Encryption
+
+- To protect sensitive files being uploaded to S3 in a Python Lambda function, use the AWS Encryption SDK for client-side encryption. This ensures that the files are encrypted before being sent to S3, providing robust security for your sensitive data.
+
+33. ### Using Cognito for Sign-In and DynamoDB Access
+
+- If youre adding sign-in functionality to a web application running in AWS, and after users have successfully signed in to your application, they need the ability to update their contact details and other user profile data that is stored in a DynamoDB table, the use:
+
+- Cognito User Pool: Provides user sign-up and sign-in functionality. (i.e. It authenticates).
+
+- Cognito Identity Pool: Provides temporary AWS credentials for accessing AWS resources. It maps authenticated users (from the user pool or other federated identity providers) to IAM roles, which define their permissions. (i.e. It authorizes)
+
+- IAM Role: Defines the permissions for DynamoDB access.
+
+- This approach leverages AWS Cognito for secure and scalable user management and integrates seamlessly with DynamoDB for storing and updating user profile data.
+
+34. ### Using Athena to Query CloudTrail Logs
+
+- If you need to review CloudTrail logs to identify any API calls made by an IAM user over the past 48 hours, use Athena to perform a SQL query on the CloudTrail data stored in S3. This approach provides efficient and powerful ad-hoc querying capabilities, allowing you to quickly identify specific API activities and investigate security incidents.
+
+- Ensure CloudTrail is configured to deliver logs to an S3 bucket and set up Athena to query these logs using SQL for detailed analysis.
+
+35. ### Configuring EC2 Instance Access to Encrypted Files
+
+- If your EC2 instance needs to access files encrypted with KMS, ensure that:
+
+- The EC2 instance has an instance role with permission to run the kms:Decrypt operation.
+- The key policy allows the instance role to use the CMK for decryption.
+- This configuration allows the EC2 instance to decrypt and access the encrypted files securely.
+
+36. ### Using IAM Policy Simulator for Access Testing
+
+- If you are encountering an IAM_ROLE_PERMISSIONS error during a CodeDeploy deployment, and suspect that your EC2 instance role may not have permission to access the S3 bucket, use the IAM policy simulator to test the instance role permissions. This tool allows you to verify if the required S3 access permissions are correctly set, helping you identify and resolve any permission issues efficiently.
+
+37. ### Using Cognito Identity Pools for Guest User Access
+
+- If you want to allow guest users to easily try out your healthy-eating application, use Cognito identity pools. Cognito identity pools enable you to create unauthenticated identities for guest users, allowing them to access your application without signing in. This approach provides a seamless user experience while maintaining control over access permissions through IAM roles.
+
+38. ### Storing Session State in ElastiCache
+
+- If you want to prevent users from losing their sessions when an EC2 instance fails, store session state in Amazon ElastiCache. This solution centralizes session management, provides low-latency access to session data, and allows your application to handle requests across multiple instances seamlessly.
+
+39. ### Enforcing KMS Encryption on S3 Bucket
+
+- To enforce that all files stored in the top-secret-documents S3 bucket are encrypted using a customer master key stored in KMS, add a bucket policy that denies PUT operations that don't contain the HTTP header x-amz-server-side-encryption: aws:kms. This ensures that only objects encrypted with KMS are allowed in the bucket.
+
+40. ### Using Default Encryption for S3 Buckets
+
+- To ensure that all new objects stored in an S3 bucket are encrypted at rest, enable default encryption on the S3 bucket. This method automatically encrypts all new objects using the specified encryption method (SSE-S3 or SSE-KMS), providing a simple and effective way to protect sensitive customer information.
+
+41. ### Using EC2 Image Builder for Custom AMIs
+
+- If your company needs to create a new custom AMI based on the latest version of Amazon Linux with the latest security patches included, and you are currently experiencing issues with long UserData script execution times during auto scaling events, use EC2 Image Builder. This service automates the creation and updating of AMIs, ensuring that your instances launch quickly and consistently with the latest security updates, addressing concerns with lengthy UserData scripts during auto scaling events.
+
+42. ### Using Cognito for Device Tracking and Management
+
+- If you need to develop a video streaming application that tracks usage across different devices and limits the number of devices from which a user can stream content, use Cognito to track and remember the devices. Cognito provides the necessary tools to manage device registration, enforce device limits, and integrate seamlessly with your application to ensure compliance with device usage policies.
+
+43. ### Envelope Encryption
+
+- This is a method of encrypting data where the data is encrypted with a data key, and then the data key is encrypted with a master key. This approach ensures that the data key is protected and only accessible by authorized entities with access to the master key.
+
+- If you need to encrypt sensitive data and ensure that the encryption key is itself encrypted under another key, use envelope encryption. This method involves encrypting the data with a data key and then encrypting the data key with a master key stored in AWS KMS. This approach provides strong security and allows for efficient encryption and decryption processes.
+
+44. ### Using Secrets Manager for Database Password Rotation
+
+- If you need to handle database password rotation in a way that allows applications to continue connecting to the database without interruption, use AWS Secrets Manager. This service automates password rotation, securely stores and retrieves database credentials, and ensures your application always uses the latest credentials. Update your application code to reference the secret in Secrets Manager, eliminating hardcoded credentials and enhancing security.
+
+45. ### Encrypting Unencrypted AMIs
+
+- If you discover unencrypted AMIs that are needed for scaling mission-critical applications, you should copy each unencrypted AMI and specify encryption during the copy process. This ensures the new AMIs are encrypted while preserving the data and configuration. After creating the encrypted copies, delete the original unencrypted AMIs to comply with the security mandate.
+
+- You cannot add encryption to an existing AMI. Instead, will need to create a copy and specify that the copy has encryption enabled.
+
+46. ### Granting Lambda Function Access to DynamoDB
+
+- If your Lambda function is throwing Permission Denied errors when accessing a DynamoDB table, create an IAM access policy that grants the necessary permissions and attach it to the execution role of the function. This ensures that the function has the appropriate permissions to read from the DynamoDB table, resolving the permission issues.
+
+
+
+
+
 
 
 

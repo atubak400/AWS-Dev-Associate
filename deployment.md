@@ -161,7 +161,11 @@ To develop a globally targeted website for private video rentals, combine Amazon
 To efficiently collect and process EC2 instance lifecycle events across multiple AWS accounts, configure the EventBridge event bus in the main account to receive events from all other accounts. Set up EventBridge rules in each account to send events to the main account's event bus, and then create a rule in the main account to forward these events to an Amazon SQS queue. This method ensures scalability, security, and centralized processing of lifecycle events.
 
 
+## Part 3
 
+30. ### Using S3 and IAM Roles for Shared Storage Access
+
+- If you are migrating a restaurant booking application to AWS and need shared storage for a large number of images and documents, store the files in Amazon S3 and use an IAM instance role to grant your EC2 instances permissions to access the shared files. This approach ensures secure and scalable access to the shared storage without the need to manage credentials manually.
 
 
 
