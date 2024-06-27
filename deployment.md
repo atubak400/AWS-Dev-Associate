@@ -158,7 +158,7 @@ To develop a globally targeted website for private video rentals, combine Amazon
 
 29. ### EventBridge event bus
 
-To efficiently collect and process EC2 instance lifecycle events across multiple AWS accounts, configure the EventBridge event bus in the main account to receive events from all other accounts. Set up EventBridge rules in each account to send events to the main account's event bus, and then create a rule in the main account to forward these events to an Amazon SQS queue. This method ensures scalability, security, and centralized processing of lifecycle events.
+- To efficiently collect and process EC2 instance lifecycle events across multiple AWS accounts, configure the EventBridge event bus in the main account to receive events from all other accounts. Set up EventBridge rules in each account to send events to the main account's event bus, and then create a rule in the main account to forward these events to an Amazon SQS queue. This method ensures scalability, security, and centralized processing of lifecycle events.
 
 
 ## Part 3
