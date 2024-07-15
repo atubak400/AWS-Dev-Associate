@@ -22,21 +22,21 @@
 
 - To provision your serverless application components using an infrastructure as code approach, the two most suitable services or frameworks are:
 
-    - AWS Serverless Application Model (AWS SAM): AWS SAM is specifically designed for building serverless applications. It extends AWS CloudFormation to provide a simplified way to define the Amazon API Gateway APIs, AWS Lambda functions, and other resources required for your serverless application.
+  - AWS Serverless Application Model (AWS SAM): AWS SAM is specifically designed for building serverless applications. It extends AWS CloudFormation to provide a simplified way to define the Amazon API Gateway APIs, AWS Lambda functions, and other resources required for your serverless application.
 
-    - AWS CloudFormation: AWS CloudFormation allows you to define and provision infrastructure as code. It can be used to manage the entire lifecycle of your infrastructure, including the Lambda functions and API Gateway endpoints, and integrates seamlessly with AWS SAM for serverless applications.
+  - AWS CloudFormation: AWS CloudFormation allows you to define and provision infrastructure as code. It can be used to manage the entire lifecycle of your infrastructure, including the Lambda functions and API Gateway endpoints, and integrates seamlessly with AWS SAM for serverless applications.
 
 5. ### CodePipeline
 
 - If youre using CI/CD pipeline CodePipeline to deploy containers to Elastic Kubernetes Service (EKS). To run a security check on the container image before deploying it to Elastic Kubernetes Service (EKS) in CodePipeline with the ability to fail the pipeline if the security check fails, you should:
 
-    - Create a test stage with a test action that will happen before the deployment stage.
+  - Create a test stage with a test action that will happen before the deployment stage.
 
-        - Explanation:
+    - Explanation:
 
-        - Test Stage with Test Action: By adding a separate test stage before the deployment stage, you can ensure that the container image undergoes a security scan before any deployment occurs. This stage can use tools like Amazon ECR image scanning, third-party security scanners, or custom scripts to perform the security checks.
+    - Test Stage with Test Action: By adding a separate test stage before the deployment stage, you can ensure that the container image undergoes a security scan before any deployment occurs. This stage can use tools like Amazon ECR image scanning, third-party security scanners, or custom scripts to perform the security checks.
 
-        - Failing the Pipeline on Security Check Failure: If the security check fails, the test stage can fail, thus preventing the pipeline from proceeding to the deployment stage. This ensures that only secure images are deployed to your EKS cluster.
+    - Failing the Pipeline on Security Check Failure: If the security check fails, the test stage can fail, thus preventing the pipeline from proceeding to the deployment stage. This ensures that only secure images are deployed to your EKS cluster.
 
 6. ### Dynamo db Composite Key
 
@@ -54,8 +54,8 @@
 
 - A secondary index allows you to create an alternate query path for your DynamoDB table. There are two types of secondary indexes in DynamoDB:
 
-    - Global Secondary Index (GSI): This allows you to query on attributes that are different from the primary key. A GSI can have a different partition key and sort key from the table's primary key.
-    - Local Secondary Index (LSI): This allows you to query on attributes that are different from the primary key but must share the same partition key as the table.
+  - Global Secondary Index (GSI): This allows you to query on attributes that are different from the primary key. A GSI can have a different partition key and sort key from the table's primary key.
+  - Local Secondary Index (LSI): This allows you to query on attributes that are different from the primary key but must share the same partition key as the table.
 
 - For example, to enable querying a DynamoDB table by userId in addition to the primary key comment_id, add a Global Secondary Index (GSI) with userId as the partition key during table creation or update the table to include this index later. This allows efficient querying by both comment_id and userId.
 
@@ -82,7 +82,6 @@
 13. ### Lambda and SQS
 
 - If you are deploying an application that runs in Lambda and processes messages from an SQS queue and you want to prevent duplicate messages from being processed, create a DynamoDB table to store the SQS message IDs of successfully processed messages, and configure the Lambda function to check this table before processing the sqs messages.
-
 
 ## Part 2
 
@@ -134,7 +133,7 @@ To deploy your in-house application code using AWS Lambda, you can use AWS Serve
 
 - Nested stacks allow you to break down your CloudFormation templates into reusable components. You can create separate templates for each type of resource (e.g., web servers, load balancers, databases) and then reference these templates in your main environment-specific templates using the AWS::CloudFormation::Stack resource. This approach promotes modularity and reuse, reducing duplication and the potential for human error.
 
-24.  ### CodePipeline
+24. ### CodePipeline
 
 - To automatically build, test, and release new software whenever a developer makes an update to their code, use AWS CodePipeline. It provides a complete CI/CD workflow by integrating with other services like CodeBuild, CodeCommit, and CodeDeploy to automate the software release process.
 
@@ -160,7 +159,6 @@ To develop a globally targeted website for private video rentals, combine Amazon
 
 - To efficiently collect and process EC2 instance lifecycle events across multiple AWS accounts, configure the EventBridge event bus in the main account to receive events from all other accounts. Set up EventBridge rules in each account to send events to the main account's event bus, and then create a rule in the main account to forward these events to an Amazon SQS queue. This method ensures scalability, security, and centralized processing of lifecycle events.
 
-
 ## Part 3
 
 30. ### Using S3 and IAM Roles for Shared Storage Access
@@ -182,3 +180,51 @@ To develop a globally targeted website for private video rentals, combine Amazon
 32. ### Managing Shards and Instances with Kinesis and KCL
 
 - If your Kinesis stream has more shards than EC2 instances, it is not necessary to increase the number of instances to match the number of shards. One worker can process any number of shards, so it's fine if the number of shards exceeds the number of instances. The Kinesis Client Library (KCL) will manage the distribution of shards among the available worker instances, ensuring efficient data processing without the need for a one-to-one mapping of instances to shards.
+
+33. ### Shards in Amazon Kinesis
+
+- Shards are the basic units of capacity in an Amazon Kinesis stream. They determine the throughput of the stream, with each shard capable of ingesting and emitting data at a defined rate. Shards can be dynamically managed to scale your stream's capacity. The Kinesis Client Library (KCL) efficiently distributes shards among worker instances, ensuring balanced and scalable data processing.
+
+34. ### Using SQS Delay Queues to Manage Timing Issues
+
+- If you encounter timing issues where confirmation emails are being processed before the stock control database is updated, modify the SQS queue to become a delay queue by setting the delivery delay to 5 seconds. This approach allows the database to update before the confirmation emails are processed, quickly resolving the issue without requiring extensive re-engineering of the application.
+
+35. ### Using MemoryDB for Redis for High-Performance, Low-Latency Applications
+
+- If you need a high-performance, low-latency solution that delivers microsecond read and single-digit millisecond write latency for database operations, store the entire dataset in MemoryDB for Redis. This service is optimized for such performance requirements, supports your dataset size, and ensures both fast access and data durability.
+
+36. ### Optimizing Latency with ElastiCache and CloudFront
+
+- If you need to reduce latency and retrieve information faster for a web application, focus on using ElastiCache for in-memory caching and CloudFront for content delivery. These two services together will provide significant improvements in performance by minimizing latency and ensuring fast data access and content delivery
+
+37. ### Using CodeBuild for Compiling Java Code
+
+- If a developer needs to compile Java code to produce a deployment artifact, they should use AWS CodeBuild. CodeBuild is a fully managed service that compiles source code, runs tests, and creates deployment-ready artifacts, streamlining the build process and ensuring consistent, reliable builds.
+
+38. ### Handling Increased Kinesis Shards with EC2 Instances
+
+- When increasing the number of Kinesis shards, evaluate the processing capacity of your current EC2 instance(s). Start with one instance in us-east-1a and one instance in us-east-1b for redundancy and balanced load distribution. Adjust the number of instances based on actual load and performance metrics to ensure efficient processing and high availability.
+
+39. ### Using DynamoDB to Persist Session State
+
+- If you need to persist session state and prevent users from losing their sessions when an EC2 instance crashes, use DynamoDB. DynamoDB provides low latency, scalability, and high availability, making it an excellent choice for storing session data and ensuring a seamless user experience even in the event of server failures.
+
+40. ### Installing the X-Ray Daemon on Elastic Beanstalk Instances
+
+- To configure your application deployed on Elastic Beanstalk to send data to AWS X-Ray, install the X-Ray daemon on the EC2 instances inside your Elastic Beanstalk environment. Use an .ebextensions configuration file to automate the installation and ensure your application is properly instrumented to capture and send trace data.
+
+41. ### Efficient Data Retrieval from DynamoDB
+
+- If you need to retrieve data from a DynamoDB table and want to minimize the consumption of provisioned capacity units, use a Query request with eventual consistency. This approach is the most efficient in terms of capacity usage, leveraging primary key access and reducing read costs with eventual consistency.
+
+42. ### Scheduling Lambda Functions with Amazon EventBridge
+
+- If you need to schedule a Lambda function to run at 10-minute intervals, use Amazon EventBridge. EventBridge allows you to create rules that can trigger Lambda functions based on a fixed schedule, ensuring your function runs automatically at the specified interval. This method is efficient, serverless, and integrates seamlessly with other AWS services.
+
+43. ### Using RDS Proxy for Connection Pooling
+
+- If your application is experiencing latency due to frequently opening and closing connections to an RDS database, use RDS Proxy to provide connection pooling. RDS Proxy helps reduce connection overhead, improves application performance, and enhances scalability by reusing database connections efficiently. This solution ensures that your application remains performant and scalable, even under high load conditions.
+
+44. ### Using CloudFormation Change Sets to Preview Stack Updates
+
+- If a developer wants to know if any existing resources will be deleted or replaced before applying updates to a CloudFormation template, they should use CloudFormation change sets. Change sets provide a preview of the modifications that will be made, allowing the developer to review and understand the impact of the changes before they are applied. This feature helps ensure that updates are made safely and without unexpected disruptions.

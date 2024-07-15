@@ -88,4 +88,52 @@ They are used to track specific numerical data points over time, such as CPU usa
 
 18. ### 500-Type Server-Side Error
 
-The error message "AmazonS3Exception: Internal Error; Service: Amazon S3;" is a 500-type error, indicating a server-side issue. This means that the problem is on the AWS S3 service side, and typically, the best course of action is to retry the request after some time, as these issues are usually temporary. If the problem persists, checking the AWS Service Health Dashboard for any ongoing issues or contacting AWS Support may be necessary.
+- The error message "AmazonS3Exception: Internal Error; Service: Amazon S3;" is a 500-type error, indicating a server-side issue. This means that the problem is on the AWS S3 service side, and typically, the best course of action is to retry the request after some time, as these issues are usually temporary. If the problem persists, checking the AWS Service Health Dashboard for any ongoing issues or contacting AWS Support may be necessary.
+
+19. ### Using DynamoDB Streams and Lambda for Real-Time Processing
+
+- If you need to process appointment data in real time when it is added or modified in a DynamoDB table, use DynamoDB Streams to capture data modifications and trigger a Lambda function to process the data and store the results in S3. This solution ensures real-time processing and storage of processed information efficiently and seamlessly.
+
+20. ### Improving RDS Performance with ElastiCache and Read Replicas
+
+- To enhance the performance of your application during periods of intensive read activity, consider adding an ElastiCache cluster to cache frequently accessed data and adding read replicas to distribute read traffic. These strategies help offload read operations from the primary RDS instance, reduce latency, and improve overall application performance.
+
+21. ### Using X-Ray for Tracing and Grouping by Environment
+
+- To effectively record and analyze HTTP requests and component latency across multiple application environments, use AWS X-Ray. 
+
+22. ### Identifying Performance Issues with X-Ray Service Map
+
+- If a web application running on AWS services is experiencing performance declines, use the X-Ray service map to view the average latency between the services that make up the application. The X-Ray service map provides a visual overview of your application's components, highlighting areas with high latency and helping you quickly identify and address performance bottlenecks.
+
+23. ### Handling 4XX HTTP Response Codes from API Gateway
+
+If you encounter 4XX HTTP response codes from API Gateway, it indicates a client error. You should fix the issue in your application and retry the request. This involves reviewing API Gateway logs, validating the request format, checking authentication and authorization, and ensuring proper rate limiting. Addressing these client-side issues will help resolve the errors and improve your application's interaction with the API Gateway.
+
+24. ### Creating a Single CloudWatch Dashboard for Multi-Region Metrics
+
+To effectively monitor system metrics for applications hosted across multiple Regions using CloudWatch, create a single dashboard that includes metrics for each application and region. This approach provides a centralized, comprehensive view of your infrastructure, simplifying monitoring and enabling quicker identification and resolution of issues
+
+25. ### Monitoring Legacy RedHat Instances with CloudWatch
+
+- To monitor legacy RedHat instances in your data center using CloudWatch and notify the support team of errors in the application log file, install the CloudWatch agent on the Linux servers, configure it to monitor the application log file, and create a CloudWatch alarm to trigger an SNS notification when an error appears. This approach ensures comprehensive monitoring and timely alerts for error conditions.
+
+26. ### Centralizing Application Logs with CloudWatch Logs
+
+To access application logs from multiple EC2 instances in a single central location, configure the CloudWatch agent to send the application logs to CloudWatch Logs. This approach provides centralized logging, enables easy search and analysis, and allows for setting up alarms and notifications based on log data.
+
+27. ### Centralizing Application Logs with CloudWatch
+
+To collect application logs from all EC2 instances into a central location like CloudWatch Logs, ensure the instance role has the necessary permissions to write to CloudWatch and that the CloudWatch agent is installed and running on each instance. These steps will enable centralized logging, making it easier to monitor and analyze application performance across multiple servers.
+
+28. ### Tracking and Monitoring Transaction Completion Times with CloudWatch
+
+To track the average transaction completion time and notify the support team if it exceeds three seconds, record transaction completion times in an application log file, use the CloudWatch agent to send these logs to CloudWatch Logs, create a metric filter to extract and monitor the completion times, and configure a CloudWatch alarm with an SNS notification. This setup ensures comprehensive monitoring and timely alerts for performance issues.
+
+29. ### Tracking and Monitoring Transaction Completion Times with CloudWatch
+
+To track the average transaction completion time and notify the support team if it exceeds three seconds, record transaction completion times in an application log file, use the CloudWatch agent to send these logs to CloudWatch Logs, create a metric filter to extract and monitor the completion times, and configure a CloudWatch alarm with an SNS notification. This setup ensures comprehensive monitoring and timely alerts for performance issues.
+
+30. ### Setting Up AWS X-Ray for Troubleshooting and Performance Analysis
+
+To send data to AWS X-Ray for your application running on EC2 and Linux virtual machines, install the X-Ray SDK and the X-Ray daemon, then instrument your application to send data to X-Ray. This setup provides detailed insights into your application’s performance and helps in troubleshooting issues efficiently.
