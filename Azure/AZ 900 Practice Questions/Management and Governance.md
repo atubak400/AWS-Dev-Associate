@@ -116,4 +116,57 @@
 
 ## Paper 3
 
-25. ### 
+25. ### Azure Monitor
+
+- If you need a service that includes Log Analytics, Azure Monitor alerts, and Application Insights, you should use Azure Monitor.
+- Azure Monitor acts as a wide-ranging surveillance tool that aggregates, scrutinizes, and reacts to telemetry data from your cloud-based and on-site infrastructures.
+
+26. ### Microsoft Purview
+
+- If a multinational corporation needs a solution to provide a unified view of data governance, ensure compliance with international data regulations, and enhance data discovery and insights across multiple cloud environments and on-premises data centers, they should enable and integrate Microsoft Purview.
+
+27. ### Operating Systems Supporting Azure CLI and Azure PowerShell
+
+- If you need to know which operating systems can have both Azure CLI and Azure PowerShell installed, the supported operating systems are macOS, Linux, and Windows.
+
+28. ### Azure Advisor
+
+- Azure Advisor is designed to provide the following functionalities:
+
+    - View Operational Excellence Recommendations: Azure Advisor provides best practices and recommendations to help you improve your operational processes and achieve operational excellence in managing your Azure resources.
+    - Recommend Cost Savings for Existing Resources: Advisor analyzes your resource usage and provides recommendations for cost savings, such as suggesting the purchase of reserved instances for long-running virtual machines (VMs), which can significantly reduce costs【
+    - Identify Steps to Improve Your Security Posture
+
+29. ### Pricing Calculator
+
+- If your CFO needs an estimate of the monthly costs of running an internal application with Azure App Service, you should use the Pricing Calculator.
+
+30. ### Azure Resource Manager
+
+- If you need to identify the Azure component responsible for all interactions with Azure, including the Azure portal, programmatic access, and command-line interaction, it is Azure Resource Manager (ARM).
+
+31. ### Azure Monitor Alerts
+
+- If you need to automatically notify your  team whenever CPU utilization on a business-critical Azure VM rises above 90% for over 5 minutes, you should use Azure Monitor Alerts.
+
+32. ### Tags
+
+- If you need a consistent method to track which office and department is using which Azure resources for cost tracking, the preferred method is to use Tags.
+
+33. ### Azure Arc
+
+- If you want to implement the "single pane of glass" functionality of Microsoft Defender for Cloud for your Azure, AWS and on-premises resources, the required prerequisite is that AWS and on-premises resources must first have Azure Arc enabled.
+
+- Azure Arc is the standard method of integrating non-Azure resources with Azure management tools and is a prerequisite to integrate external locations with Microsoft Defender for Cloud.
+
+34. ### Alert Rule and Action Group
+
+- If you need to configure Azure Monitor alerts, the required components are Alert Rule and Action Group.
+
+35. ### Enable Azure Arc on Your On-Premises Servers
+
+- If you need to run Azure serverless services, like Logic Apps, on your on-premises servers, the preferred method is to enable Azure Arc on your on-premises servers.
+
+36. ### Spot Virtual Machines
+
+- If you are looking to decrease costs for a non-business-critical workload on Azure, you should use Spot Virtual Machines, which can provide cost savings of up to 90% compared to on-demand pricing.
