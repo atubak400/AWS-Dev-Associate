@@ -1,6 +1,6 @@
 # Microsoft Azure AZ900 - Describe Cloud Concepts
 
-## ## Paper 1
+## Paper 1
 
 1. ### Private clouds
 
