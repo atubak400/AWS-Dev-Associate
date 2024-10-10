@@ -36,6 +36,8 @@
 
 - The Service Trust Portal provides information about Microsoft's security, privacy, and compliance practices. It includes resources such as audit reports, compliance guides, and trust documents that detail how Microsoft secures its cloud infrastructure to meet various compliance standards.
 
+- There are a lot of similarities between Compliance Manager and the Service Trust Portal. The primary difference is that the Service Trust Portal provides information on how to meet different compliance requirements, and Compliance Manager assesses your actual Azure environment to measure adherence to those requirements, including action steps to resolve where you fall short.
+
 9. ### Resource Locks in Azure
 
 - Resource locks are used to protect your critical Azure resources from accidental deletion or modification. You can apply two types of locks:
